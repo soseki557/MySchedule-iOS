@@ -27,5 +27,7 @@
         </dict>
         <key>CFBundleShortVersionString</key>
         <string>$(MARKETING_VERSION)</string>
+        <key>LSSupportsOpeningDocumentsInPlace</key>
+        <false/>
 </dict>
 </plist>
