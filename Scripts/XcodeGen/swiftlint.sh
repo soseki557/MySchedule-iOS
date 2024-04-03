@@ -1,11 +1,14 @@
-# build swiftlint
-xcrun --sdk macosx swift build -c release \
---package-path ${BUILD_DIR%Build/*}SourcePackages/checkouts/SwiftLint \
---product swiftlint
+PACKAGE_PATH=${BUILD_DIR%Build/*}"SourcePackages/checkouts/SwiftLint"
+SWIFTLINT_PATH=$PACKAGE_PATH"/.build/release/swiftlint"
 
-# run swiftlint
+if [ ! -e ${SWIFTLINT_PATH} ]; then
+    xcrun --sdk macosx swift build -c release \
+    --package-path $PACKAGE_PATH \
+    --product swiftlint
+fi
+
 if [ ${XCODE_BUILD_WARNING_AS_ERROR} = "YES" ]; then
-  ${BUILD_DIR%Build/*}SourcePackages/checkouts/SwiftLint/.build/release/swiftlint lint --strict
+    $SWIFTLINT_PATH lint --strict
 else
-  ${BUILD_DIR%Build/*}SourcePackages/checkouts/SwiftLint/.build/release/swiftlint lint
+    $SWIFTLINT_PATH lint
 fi
