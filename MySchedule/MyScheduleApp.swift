@@ -5,8 +5,8 @@
 //  Created by YOSHiTAK on 2024/03/30.
 //
 
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 @main
 struct MyScheduleApp: App {
@@ -14,7 +14,7 @@ struct MyScheduleApp: App {
         let schema = Schema([
             Task.self
         ])
-        let modelConfiguration =  ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
