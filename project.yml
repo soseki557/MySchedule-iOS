@@ -43,6 +43,9 @@ targets:
       - MyScheduleTests
     dependencies:
       - target: MySchedule
+    settings:
+      base:
+        INFOPLIST_FILE: MyScheduleTests/Info.plist
   MyScheduleUITests:
     type: bundle.ui-testing
     platform: iOS
@@ -50,6 +53,9 @@ targets:
       - MyScheduleUITests
     dependencies:
       - target: MySchedule
+    settings:
+      base:
+        INFOPLIST_FILE: MyScheduleUITests/Info.plist
 schemes:
   MySchedule:
     build:
