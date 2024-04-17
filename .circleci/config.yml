@@ -19,4 +19,9 @@ jobs:
       - checkout
       - run: echo "hello world"
       - notify_slack_fail
-         context: myschedule-ios
+
+workflows:
+  code_health:
+    jobs:
+      - test:
+          context: myschedule-ios
