@@ -23,5 +23,5 @@ jobs:
 workflows:
   code_health:
     jobs:
-      - test:
+      - build:
           context: myschedule-ios
