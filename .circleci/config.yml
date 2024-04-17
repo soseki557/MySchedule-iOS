@@ -1,4 +1,16 @@
 version: 2.1
+
+orbs:
+  slack: circleci/slack@4.8
+
+commands:
+  notify_slack_fail:
+    steps:
+    - slack/notify:
+        channel: C06UEBP86S0
+        event: fail
+        template: basic_fail_1
+
 jobs:
   build:
     docker:
@@ -6,4 +18,4 @@ jobs:
     steps:
       - checkout
       - run: echo "hello world"
-
+      - notify_slack_fail
