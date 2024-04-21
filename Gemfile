@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '3.2.3'
+ruby '3.1.4'
 
 gem 'fastlane'
 
