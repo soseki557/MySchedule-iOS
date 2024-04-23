@@ -7,7 +7,7 @@ commands:
   notify_slack_fail:
     steps:
     - slack/notify:
-        channel: D06UQJ5D6DP
+        channel: C06UEBP86S0
         event: fail
         template: basic_fail_1
 
