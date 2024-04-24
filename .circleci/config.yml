@@ -3,6 +3,11 @@ version: 2.1
 orbs:
   slack: circleci/slack@4.8
 
+executors:
+  m1_medium:
+    macos:
+      xcode: 14.3.1
+    resource_class: macos.m1.medium.gen1
 commands:
   notify_slack_fail:
     steps:
@@ -13,8 +18,10 @@ commands:
 
 jobs:
   build:
-    macos:
-      xcode: 15.1.0
+    parameters:
+      executor:
+        type: executor
+    executor: << parameters.executor >>
     steps:
       - checkout
       - run: sh skipPackagePluginValidation.sh
@@ -28,4 +35,5 @@ workflows:
   code_health:
     jobs:
       - build:
+          executor: m1_medium
           context: myschedule-ios
