@@ -18,10 +18,8 @@ commands:
 
 jobs:
   build:
-    parameters:
-      executor:
-        type: executor
-    executor: << parameters.executor >>
+    macos:
+      xcode: 15.1.0
     steps:
       - checkout
       - run: sh skipPackagePluginValidation.sh
@@ -35,5 +33,4 @@ workflows:
   code_health:
     jobs:
       - build:
-          executor: gen2_medium
           context: myschedule-ios
