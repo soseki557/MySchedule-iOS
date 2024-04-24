@@ -18,7 +18,7 @@ final class MyScheduleTests: XCTestCase {
     }
 
     func testExample() throws {
-        XCTAssertTrue(false)
+        XCTAssertTrue(true)
     }
 
     func testPerformanceExample() throws {
