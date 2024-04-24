@@ -4,10 +4,10 @@ orbs:
   slack: circleci/slack@4.8
 
 executors:
-  m1_medium:
+  gen2_medium:
     macos:
       xcode: 14.3.1
-    resource_class: macos.m1.medium.gen1
+    resource_class: macos.x86.medium.gen2
 commands:
   notify_slack_fail:
     steps:
@@ -35,5 +35,5 @@ workflows:
   code_health:
     jobs:
       - build:
-          executor: m1_medium
+          executor: gen2_medium
           context: myschedule-ios
