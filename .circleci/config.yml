@@ -28,6 +28,7 @@ jobs:
       - run: bundle exec fastlane generate_project
       - run: bundle exec fastlane test
       - notify_slack_fail
+      - run: bundle exec fastlane analyze
 
 workflows:
   code_health:
