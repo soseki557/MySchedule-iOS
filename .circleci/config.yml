@@ -8,6 +8,10 @@ executors:
     macos:
       xcode: 14.3.1
     resource_class: macos.x86.medium.gen2
+dependencies:
+  pre:
+    - brew update
+    - brew install swiftlint
 commands:
   notify_slack_fail:
     steps:
