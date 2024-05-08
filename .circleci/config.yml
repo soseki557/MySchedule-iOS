@@ -27,8 +27,6 @@ jobs:
       - run: bundle install
       - run: bundle exec fastlane generate_project
       - run: bundle exec fastlane test
-      - run: echo $CIRCLE_PR_NUMBER
-      - run: echo $CIRCLE_PR_REPONAME
       - notify_slack_fail
 
 workflows:
