@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 ruby '3.1.4'
 
 gem 'fastlane'
+gem 'checkstyle_filter-git'
 gem 'saddler'
 gem 'saddler-reporter-github'
 gem 'swiftlint_translate_checkstyle_format'
