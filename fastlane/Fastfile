@@ -36,8 +36,6 @@ platform :ios do
       config_file: '.swiftlint-ci.yml'
     )
 
-    sh 'cp ../swiftlint.result.json $CIRCLE_ARTIFACTS/'
-
     sh <<-EOS
 cd ../;
 cat swiftlint.result.json \
