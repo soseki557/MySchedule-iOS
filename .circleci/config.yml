@@ -27,6 +27,9 @@ jobs:
       - run: sh skipPackagePluginValidation.sh
       - run: sh skipMacroValidation.sh 
       - run: bundle install
+      - run: gem install saddler 
+      - run: gem install saddler-reporter-github
+      - run: gem install swiftlint_translate_checkstyle_format 
       - run: bundle exec fastlane generate_project
       - run: bundle exec fastlane test
       - notify_slack_fail
