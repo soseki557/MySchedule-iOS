@@ -40,7 +40,7 @@ platform :ios do
 cd ../;
 cat swiftlint.result.json \
     | swiftlint_translate_checkstyle_format translate \
-    | checkstyle_filter-git diff main \
+    | checkstyle_filter-git diff origin/main.. \
     | saddler report --require saddler/reporter/github --reporter #{reporter}
     EOS
 
