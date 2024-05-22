@@ -33,7 +33,7 @@ platform :ios do
 
     sh <<-EOS
 cd ../;
-swiftlint lint --reporter json | linterbot soseki557/MySchedule-iOS $CI_PULL_REQUEST
+swiftlint lint --reporter json | linterbot soseki557/MySchedule-iOS ${CIRCLE_PULL_REQUEST##*/}
     EOS
 
     delete_lint_config
