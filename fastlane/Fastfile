@@ -31,7 +31,9 @@ platform :ios do
   lane :analyze do
     create_lint_config
 
-    swiftlint lint --reporter json | linterbot $CIRCLE_PROJECT_REPONAME $CIRCLE_PR_NUMBER
+    sh <<-EOS
+swiftlint lint --reporter json | linterbot $CIRCLE_PROJECT_REPONAME $CIRCLE_PR_NUMBER
+    EOS
 
     delete_lint_config
   end
