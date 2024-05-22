@@ -33,7 +33,7 @@ platform :ios do
 
     sh <<-EOS
 cd ../;
-swiftlint lint --reporter json | linterbot $CIRCLE_PROJECT_REPONAME $CIRCLE_PR_NUMBER
+swiftlint lint --reporter json | linterbot $CIRCLE_PROJECT_REPONAME $CI_PULL_REQUEST
     EOS
 
     delete_lint_config
