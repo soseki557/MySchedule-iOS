@@ -31,7 +31,7 @@ jobs:
       - run: bundle exec fastlane generate_project
       - run: bundle exec fastlane test
       - notify_slack_fail
-      - run: bundle exec fastlane analyze
+      - run: bundle exec fastlane swiftlint
 
 workflows:
   code_health:

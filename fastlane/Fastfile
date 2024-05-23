@@ -26,9 +26,8 @@ platform :ios do
     xcodegen(spec: "project.yml")
   end
 
-  desc 'Analyze'
-  desc 'This may comment to pull request'
-  lane :analyze do
+  desc 'SwiftLintを実行して結果をプルリクエストにコメントする'
+  lane :swiftlint do
     create_lint_config
 
     sh <<-EOS
