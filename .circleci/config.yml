@@ -3,6 +3,11 @@ version: 2.1
 orbs:
   slack: circleci/slack@4.8
 
+executors:
+  gen2_medium:
+    macos:
+      xcode: 14.3.1
+    resource_class: macos.x86.medium.gen2
 commands:
   notify_slack_fail:
     steps:
@@ -17,12 +22,16 @@ jobs:
       xcode: 15.1.0
     steps:
       - checkout
+      - run: brew update
+      - run: brew install swiftlint
       - run: sh skipPackagePluginValidation.sh
       - run: sh skipMacroValidation.sh 
       - run: bundle install
+      - run: gem install linterbot 
       - run: bundle exec fastlane generate_project
       - run: bundle exec fastlane test
       - notify_slack_fail
+      - run: bundle exec fastlane swiftlint
 
 workflows:
   code_health:

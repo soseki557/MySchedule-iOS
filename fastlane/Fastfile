@@ -25,4 +25,30 @@ platform :ios do
   lane :generate_project do
     xcodegen(spec: "project.yml")
   end
+
+  desc 'SwiftLintを実行して結果をプルリクエストにコメントする'
+  lane :swiftlint do
+    create_lint_config
+
+    sh <<-EOS
+cd ../;
+swiftlint lint --reporter json | linterbot soseki557/MySchedule-iOS ${CIRCLE_PULL_REQUEST##*/}
+    EOS
+
+    delete_lint_config
+  end
+
+  def create_lint_config
+    File.delete('../.swiftlint-ci.yml') if File.exist?('../.swiftlint-ci.yml')
+    require 'yaml'
+    config = YAML.load_file('../.swiftlint.yml')
+    config['reporter'] = 'json'
+    open('../.swiftlint-ci.yml', 'w') do |file|
+      YAML.dump(config, file)
+    end
+  end
+
+  def delete_lint_config
+    File.delete('../.swiftlint-ci.yml')
+  end
 end
